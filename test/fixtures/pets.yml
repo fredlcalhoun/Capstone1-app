@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  lost_or_found: MyString
+  name: MyString
+  animal: MyString
+  breed: MyString
+  color: MyString
+  city: MyString
+  state: MyString
+  neighborhood: MyString
+  description: MyString
+  time: 2017-08-06 16:30:08
+
+two:
+  user_id: 1
+  lost_or_found: MyString
+  name: MyString
+  animal: MyString
+  breed: MyString
+  color: MyString
+  city: MyString
+  state: MyString
+  neighborhood: MyString
+  description: MyString
+  time: 2017-08-06 16:30:08
