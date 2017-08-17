@@ -1,4 +1,3 @@
 class Image < ApplicationRecord
-
-  belongs_to: pets
+  belongs_to :pets
 end
