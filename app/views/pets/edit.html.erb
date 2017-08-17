@@ -1,0 +1,37 @@
+<h1>Edit pet</h1>
+<%= form_tag "/pets/#{@pet.id}", method: "patch" do %>
+  <div class="form-group">
+    User id: <input type="text" class="form-control" value="<%= @pet.user_id %>" name="user_id">
+  </div>
+  <div class="form-group">
+    Lost or found: <input type="text" class="form-control" value="<%= @pet.lost_or_found %>" name="lost_or_found">
+  </div>
+  <div class="form-group">
+    Name: <input type="text" class="form-control" value="<%= @pet.name %>" name="name">
+  </div>
+  <div class="form-group">
+    Animal: <input type="text" class="form-control" value="<%= @pet.animal %>" name="animal">
+  </div>
+  <div class="form-group">
+    Breed: <input type="text" class="form-control" value="<%= @pet.breed %>" name="breed">
+  </div>
+  <div class="form-group">
+    Color: <input type="text" class="form-control" value="<%= @pet.color %>" name="color">
+  </div>
+  <div class="form-group">
+    City: <input type="text" class="form-control" value="<%= @pet.city %>" name="city">
+  </div>
+  <div class="form-group">
+    State: <input type="text" class="form-control" value="<%= @pet.state %>" name="state">
+  </div>
+  <div class="form-group">
+    Neighborhood: <input type="text" class="form-control" value="<%= @pet.neighborhood%>" name="neighborhood">
+  </div>
+  <div class="form-group">
+    Description: <input type="text" class="form-control" value="<%= @pet.description %>" name="description">
+  </div>
+  <div class="form-group">
+    Time: <input type="text" class="form-control" value="<%= @pet.time %>" name="time">
+  </div>
+  <input type="submit" class="btn btn-default" value="Update pet">
+<% end %>
