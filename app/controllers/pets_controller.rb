@@ -1,6 +1,12 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all
+    if params[:animal]
+      @lost_pets = Pet.where(lost_or_found: "lost", animal: params[:animal])
+      @found_pets = Pet.where(lost_or_found: "found", animal: params[:animal])
+    else
+      @lost_pets = Pet.where(lost_or_found: "lost")
+      @found_pets = Pet.where(lost_or_found: "found")
+    end
     render "index.html.erb"
   end
 
@@ -9,7 +15,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.new(
+     pet = Pet.new(
       user_id: params[:user_id],
       lost_or_found: params[:lost_or_found],
       name: params[:name],
@@ -22,8 +28,18 @@ class PetsController < ApplicationController
       description: params[:description],
       time: params[:time],
     )
-    pet.save
-    render "create.html.erb"
+    if @pet.save
+      Image.create(
+        url: params[:image_id],
+        pet_id: @pet.id
+      )
+      flash[:success] = "Pet Created"
+      redirect_to "/pets/#{@pet.id}"
+    else
+      @pets = Pet.all
+      render "new.html.erb"
+    end
+
   end
 
   def show

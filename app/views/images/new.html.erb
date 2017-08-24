@@ -1,0 +1,10 @@
+<h1>Image Gallery</h1>
+<%= form_tag "/images", method: :post do %>
+  <div>
+    Image id: <input type="image" name="image">
+  </div>
+  <div>
+    URL: <input type="url" name="url">
+  </div>
+  <input type="submit" value="img">
+<% end %>

@@ -1,1 +1,38 @@
-<h1>Pets!</h1>
+<h1>Lost Pets!</h1>
+
+ <section>
+      <div class="row">
+
+        <% @lost_pets.each do |lost_pet| %>
+
+          
+            
+              <h1><%= lost_pet.name %></h1>
+              <p></p>
+              <a href="/pets/<%= lost_pet.id %>" title="View pet"><%= lost_pet.name %></a>
+              <p>Description:  <%= lost_pet.description %></p>
+        
+        <% end %>
+
+      </div>
+ </section>
+
+
+<h2>Found Pets!</h2>
+
+ <section>
+      <div class="row">
+
+        <% @found_pets.each do |found_pet| %>
+
+          
+            
+              <h1><%= found_pet.name %></h1>
+              <p></p>
+              <a href="/pets/<%= found_pet.id %>" title="View pet"><%= found_pet.name %></a>
+              <p>Description:  <%= found_pet.description %></p>
+        
+        <% end %>
+
+      </div>
+ </section>

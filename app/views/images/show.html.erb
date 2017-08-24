@@ -1,0 +1,13 @@
+<h1>Image id</h1>
+<h2><%= @pet.image_id %></h2>
+<h3>URL: <%= @pet.url %></h3>
+<p>Pet_id: <%= @pet.image_id %></p>
+<div>
+  <a href="/images">Return to all pets</a>
+</div>
+<div>
+  <a href="/images/<%= @pet.id %>/edit">Image of pet</a>
+</div>
+<%= form_tag "/images/#{@pet.id}", method: "delete" do %>
+  <input type="submit" value="Destroy pet">
+<% end %>

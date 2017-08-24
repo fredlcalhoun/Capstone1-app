@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   patch "/pets/:id" => "pets#update"
   delete "/pets/:id" => "pets#destroy"
 
+  get "/images" => "images#index"
+  get "/images/new" => "images#new"
+  post "/images" => "images#create"
+  get "/images/:id" => "images#show"
+  get "/images/:id" => "images#edit"
+  patch "/images/:id" => "images#update"
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
