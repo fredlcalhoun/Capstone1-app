@@ -3,6 +3,11 @@ class PetsController < ApplicationController
     if params[:animal]
       @lost_pets = Pet.where(lost_or_found: "lost", animal: params[:animal])
       @found_pets = Pet.where(lost_or_found: "found", animal: params[:animal])
+       input_breed = params[:form_breed] || "Breed"
+       input_color = params[:form_color] || "Color"
+       input_city = params[:form_city] || "Chicago"
+       input_state = params[:form_state] || "IL"
+       input_neighborhood = params[:form_neighborhood] || "Neighborhood"
     else
       @lost_pets = Pet.where(lost_or_found: "lost")
       @found_pets = Pet.where(lost_or_found: "found")
