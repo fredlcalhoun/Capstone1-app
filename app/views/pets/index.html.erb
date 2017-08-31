@@ -1,28 +1,31 @@
-<h1>Lost Pets!</h1>
+<h1></h1>
 <br>
-
+<style type="text/css">
+  form input{
+    color: black !important;
+  }
+</style>
 
 <section>
 
     <p><%= @pets %></p>
       <%= form_tag "/pets", method: "get" do %>
-      Animal: <form action="/action_page.php">
-                <select name="Animal">
-                  <option value="dog">dog</option>
-                  <option value="cat">Cat</option>
-                </select>
-                <br>
-                <br>
-                
-              </form>
-      Breed: <input type="text" breed="form_breed">
-      Color: <input type="text" color="form_color">
+      Animal:
+      <select name="form_animal">
+        <option value="dog">dog</option>
+        <option value="cat">Cat</option>
+      </select>
+      Breed: <input type="text" name="form_breed">
+      Color: <input type="text" name="form_color">
       City: <input type="text" name="form_city">
       State: <input type="text" name="form_state">
       Neighborhood: <input type="text" name="form_neighborhood">
       <input type="submit" value="Submit">
       <% end %>
 
+ <br>
+ <br>
+ <p>Lost Pets!</p>
 
  <section>
       <div class="row">

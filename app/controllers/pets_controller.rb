@@ -1,13 +1,15 @@
 class PetsController < ApplicationController
   def index
-    if params[:animal]
-      @lost_pets = Pet.where(lost_or_found: "lost", animal: params[:animal])
-      @found_pets = Pet.where(lost_or_found: "found", animal: params[:animal])
-       input_breed = params[:form_breed] || "Breed"
-       input_color = params[:form_color] || "Color"
-       input_city = params[:form_city] || "Chicago"
-       input_state = params[:form_state] || "IL"
-       input_neighborhood = params[:form_neighborhood] || "Neighborhood"
+    if params[:form_animal]
+      search_hash = {}
+      search_hash[:animal] = params[:form_animal] if params[:form_animal] != ""
+      search_hash[:breed] = params[:form_breed] if params[:form_breed] != ""
+      search_hash[:color] = params[:form_color] if params[:form_color] != ""
+      search_hash[:city] = params[:form_city] if params[:form_city] != ""
+      search_hash[:state] = params[:form_state] if params[:form_state] != ""
+      search_hash[:neighborhood] = params[:form_neighborhood] if params[:form_neighborhood] != ""
+      @lost_pets = Pet.where(search_hash).where(lost_or_found: "lost")
+      @found_pets = Pet.where(search_hash).where(lost_or_found: "found")
     else
       @lost_pets = Pet.where(lost_or_found: "lost")
       @found_pets = Pet.where(lost_or_found: "found")
