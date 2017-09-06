@@ -43,7 +43,7 @@ Image.create(url: "http://img.lovpho.com/anh/2016/26-3/golden-cocker-retriever-f
 Image.create(url: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Tortoiseshell_singapore_stray_cat.jpg", pet_id: 5)
 Image.create(url: "http://www.asergeev.com/p/xl-2013-1206-06/doha_musheirib_qatar-sneaking_stray_cat_musheirib_area.jpg", pet_id: 6)
 Image.create(url: "http://az616578.vo.msecnd.net/files/2016/03/07/6359296760565335581045924475_boston-terrier5.jpg", pet_id: 7)
-Image.create(url: "https://s-media-cache-ak0.pinimg.com/736xba/72c8ba8be03416d20734358a885ecdf8--boston-terrier-love-boston-terriers.jpg", pet_id: 8)
+Image.create(url: "https://s-media-cache-ak0.pinimg.com/736xba/72c8ba8be03416d20734358a885ecdf8--boston-terrier-love-boston-terriers.jpg", pet_id: 8)       
 Image.create(url: "http://www.albany.com/dog-talk/wp-content/uploads/sites/78/2011/11/stray20dog2.jpg", pet_id: 9)
 Image.create(url: "http://www.clevelandseniors.com/images/petfun/cat-maggie-may-1.jpg", pet_id: 10)
 Image.create(url: "https://www.dogbreedinfo.com/images24/SiberianHusky3YearsOldPurebredSireNamedHusky3YearsOld.JPG", pet_id: 11)

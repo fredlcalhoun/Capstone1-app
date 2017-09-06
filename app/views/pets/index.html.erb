@@ -48,6 +48,51 @@
                  
     </div>
   </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#Carousel').carousel({
+        interval: 5000
+    });
+});
+</script>
+
+
+<section>
+<h2>Found Pets</h2>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+                <div id="Carousel" class="carousel slide">
+                 
+                <ol class="carousel-indicators">
+                <% @found_pets.each_slice(4).with_index do |four_found_pets, index| %>
+                    <li data-target="#Carousel" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+                <% end %>
+                </ol>
+                 
+                <div class="carousel-inner">
+
+                <% @found_pets.each_slice(4) do |four_found_pets| %>
+                <div class="item">
+                  <div class="row">
+                    <% four_found_pets.each do |found_pet| %>
+                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="<%= found_pet.images.first.url %>" alt="Image" style="max-width:100%;"></a></div>
+                    <% end %>
+                  </div>
+                </div>  
+                <% end %>
+
+                 
+                </div><!--.carousel-inner-->
+
+                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
+                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+                </div><!--.Carousel-->
+                 
+      </div>
+    </div>
+
 </div><!--.container-->
 
     <p><%= @pets %></p>
@@ -67,7 +112,7 @@
 
  <br>
  <br>
- <p>Lost Pets!</p>
+ 
 
  <section>
       <div class="row">
