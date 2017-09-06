@@ -33,8 +33,9 @@
                 <div class="item">
                   <div class="row">
                     <% four_lost_pets.each do |lost_pet| %>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="<%= lost_pet.images.first.url %>" alt="Image" style="max-width:100%;"></a></div>
-                    <% end %>
+                    <div class="col-md-3"><a href="/pets/<%= lost_pet.id %>" class="thumbnail"><img src="<%= lost_pet.images.first.url %>" alt="Image" class="img-fluid"></a>
+                    </div>
+                <% end %>
                   </div>
                 </div>  
                 <% end %>
@@ -77,7 +78,7 @@
                 <div class="item">
                   <div class="row">
                     <% four_found_pets.each do |found_pet| %>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="<%= found_pet.images.first.url %>" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="/pets/<%= found_pet.id %>" class="thumbnail"><img src="<%= found_pet.images.first.url %>" alt="Image" style="max-width:100%;"></a></div>
                     <% end %>
                   </div>
                 </div>  
@@ -114,7 +115,7 @@
  <br>
  
 
- <section>
+ <!-- <section>
       <div class="row">
 
         <% @lost_pets.each do |lost_pet| %>
@@ -150,5 +151,5 @@
 
       </div>
  </section>
-
+ -->
  
