@@ -22,8 +22,8 @@ class PetsController < ApplicationController
   end
 
   def create
-     pet = Pet.new(
-      user_id: params[:user_id],
+     @pet = Pet.new(
+      user_id: current_user.id,
       lost_or_found: params[:lost_or_found],
       name: params[:name],
       animal: params[:animal],
@@ -36,12 +36,20 @@ class PetsController < ApplicationController
       time: params[:time],
     )
     if @pet.save
-      Image.create(
-        url: params[:image_id],
-        pet_id: @pet.id
-      )
-      flash[:success] = "Pet Created"
-      redirect_to "/pets/#{@pet.id}"
+      if params[:image_url]
+        Image.create(
+          url: params[:image_url],
+          pet_id: @pet.id
+        )
+      end
+      if @pet.lost_or_found == "found"
+        flash[:success] = "Pet Created"
+        redirect_to "/pets"
+        # redirect_to "/pets?form_breed=#{@pet.breed}"
+      else
+        flash[:success] = "Pet Created"
+        redirect_to "/pets/#{@pet.id}"
+      end
     else
       @pets = Pet.all
       render "new.html.erb"

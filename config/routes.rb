@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/" => "pets#index"
+
   get "/users" => "users#index"
   get "/users/new" => "users#new"
   

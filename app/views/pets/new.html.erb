@@ -1,1 +1,40 @@
-<h1>Add new lost or found pet here:</h1>
+<h1>Add new lost or found pets here:</h1>
+
+<%= form_tag "/pets", method: "post" do %>
+  Lost or Found:
+  <select name="lost_or_found">
+     <option value="lost">Lost</option>
+     <option value="found">Found</option>
+  </select>
+  <br>
+  <br>
+
+  <div>
+    Animal: <input type="text" name="animal">
+  </div>
+  <br>
+  <div>
+    Breed: <input type="text" name="breed">
+  </div>
+  <br>
+  <div>
+    Color: <input type="text" name="color">
+  </div>
+  <br>
+  <div>
+    City: <input type="text" name="city">
+  </div>
+  <br>
+  <div>
+    State: <input type="text" name="state">
+  </div>
+  <br>
+  <div>
+    Neighborhood: <input type="text" name="neighborhood">
+  </div>
+  <br>
+  <div>
+    Image: <input type="text" name="image_url">
+  </div>
+  <input type="submit" class="btn btn-default" value="Create pet">
+<% end %>
