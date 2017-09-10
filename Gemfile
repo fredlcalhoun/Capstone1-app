@@ -37,6 +37,8 @@ gem 'twilio-ruby', '~> 5.2.1'
 #api storage
 gem 'figaro'
 
+gem "paperclip", "~> 5.0.0"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

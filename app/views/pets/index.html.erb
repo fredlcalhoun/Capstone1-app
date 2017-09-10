@@ -10,7 +10,7 @@
   $(document).ready(function() {
     $('#Carousel').carousel({
         interval: 5000
-    })
+    });
 });
 </script>
 
@@ -33,7 +33,7 @@
                 <div class="item">
                   <div class="row">
                     <% four_lost_pets.each do |lost_pet| %>
-                    <div class="col-md-3"><a href="/pets/<%= lost_pet.id %>" class="thumbnail"><img src="<%= lost_pet.images.first.url %>" alt="Image" class="img-fluid"></a>
+                    <div class="col-md-3"><a href="/pets/<%= lost_pet.id %>" class="thumbnail"><img src="<%= lost_pet.images.first.src %>" alt="Image" class="img-fluid"></a>
                     </div>
                 <% end %>
                   </div>
@@ -49,26 +49,27 @@
                  
     </div>
   </div>
+<br>
+<br>
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#Carousel').carousel({
+    $('#Carousel2').carousel({
         interval: 5000
     });
 });
 </script>
 
-
 <section>
 <h2>Found Pets</h2>
-<div class="container">
+<div class="container2">
     <div class="row">
       <div class="col-md-12">
-                <div id="Carousel" class="carousel slide">
+                <div id="Carousel2" class="carousel slide">
                  
                 <ol class="carousel-indicators">
                 <% @found_pets.each_slice(4).with_index do |four_found_pets, index| %>
-                    <li data-target="#Carousel" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+                    <li data-target="#Carousel2" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
                 <% end %>
                 </ol>
                  
@@ -78,7 +79,7 @@
                 <div class="item">
                   <div class="row">
                     <% four_found_pets.each do |found_pet| %>
-                    <div class="col-md-3"><a href="/pets/<%= found_pet.id %>" class="thumbnail"><img src="<%= found_pet.images.first.url %>" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="/pets/<%= found_pet.id %>" class="thumbnail"><img src="<%= found_pet.images.first.src %>" alt="Image" style="max-width:100%;"></a></div>
                     <% end %>
                   </div>
                 </div>  
@@ -87,14 +88,20 @@
                  
                 </div><!--.carousel-inner-->
 
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+                  <a data-slide="prev" href="#Carousel2" class="left carousel-control">‹</a>
+                  <a data-slide="next" href="#Carousel2" class="right carousel-control">›</a>
                 </div><!--.Carousel-->
                  
       </div>
     </div>
 
 </div><!--.container-->
+
+<% @found_pets.each do |found_pet| %>
+  <p><%= found_pet.id %></p>
+  <p><%= found_pet.images.first.url_file_name %></p>
+  <img src="<%= found_pet.images.first.src %>" alt="Image" style="max-width:100%;">
+<% end %>
 
     <p><%= @pets %></p>
       <%= form_tag "/pets", method: "get" do %>

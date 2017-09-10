@@ -1,6 +1,8 @@
+<div class="container">
+  
 <h1>Add new lost or found pets here:</h1>
 
-<%= form_tag "/pets", method: "post" do %>
+<%= form_tag "/pets", method: "post", multipart: true, class: "text-left" do %>
   Lost or Found:
   <select name="lost_or_found">
      <option value="lost">Lost</option>
@@ -34,7 +36,8 @@
   </div>
   <br>
   <div>
-    Image: <input type="text" name="image_url">
+    Image: <input type="file" name="image_url">
   </div>
   <input type="submit" class="btn btn-default" value="Create pet">
 <% end %>
+</div>
