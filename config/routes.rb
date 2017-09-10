@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get "/" => "pets#index"
 
   get "/users" => "users#index"
@@ -25,6 +26,12 @@ Rails.application.routes.draw do
   get "/images/:id" => "images#show"
   get "/images/:id" => "images#edit"
   patch "/images/:id" => "images#update"
+
+  get "/messages/new" => "messages#new"
+  post "/messages" => "messages#new"
+  get "/messages/:id" => "messages#show"
+
+  
 
 
 

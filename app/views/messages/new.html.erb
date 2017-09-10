@@ -1,0 +1,35 @@
+<h1>Message!</h1>
+
+<%= form_tag "/messages", method: "post" do %>
+  
+  
+
+  <div>
+    Animal: <input type="text" name="animal">
+  </div>
+  <br>
+  <div>
+    Breed: <input type="text" name="breed">
+  </div>
+  <br>
+  <div>
+    Color: <input type="text" name="color">
+  </div>
+  <br>
+  <div>
+    City: <input type="text" name="city">
+  </div>
+  <br>
+  <div>
+    State: <input type="text" name="state">
+  </div>
+  <br>
+  <div>
+    Neighborhood: <input type="text" name="neighborhood">
+  </div>
+  <br>
+  <div>
+    Image: <input type="text" name="image_url">
+  </div>
+  <input type="submit" class="btn btn-default" value="Send message">
+<% end %>

@@ -22,6 +22,7 @@ class PetsController < ApplicationController
   end
 
   def create
+
      @pet = Pet.new(
       user_id: current_user.id,
       lost_or_found: params[:lost_or_found],
@@ -35,6 +36,7 @@ class PetsController < ApplicationController
       description: params[:description],
       time: params[:time],
     )
+       
     if @pet.save
       if params[:image_url]
         Image.create(
@@ -44,6 +46,23 @@ class PetsController < ApplicationController
       end
       if @pet.lost_or_found == "found"
         flash[:success] = "Pet Created"
+          account_sid = "#{ENV["twilio_account_sid"]}"
+        auth_token = "#{ENV["twilio_auth_token"]}"
+
+        @client = Twilio::REST::Client.new account_sid, auth_token
+
+        Twilio.configure do |config|
+          config.account_sid = account_sid
+          config.auth_token = auth_token
+        end
+
+        @client = Twilio::REST::Client.new
+
+        @client.api.account.messages.create(
+          from: '+13126673662',
+          to: '+12242341138',
+          body: 'Alert! Somebody has posted a found pet. Please login on to the Sherlock Paws website to check if that pet might be yours.',
+        )
         redirect_to "/pets"
         # redirect_to "/pets?form_breed=#{@pet.breed}"
       else
