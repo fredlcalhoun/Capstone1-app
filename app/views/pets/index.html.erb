@@ -6,99 +6,11 @@
   }
 </style>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#firstcarousel, #secondcarousel').carousel({
-        interval: false
-    });    
-});
-</script>
-
-
-<h2>Lost pets</h2>
-<div class="container">
-    <div class="row" id="firstcarousel" >
-      <div class="col-md-12">
-                  <div class="carousel slide">
-                  <div class="carousel-inner">
-                  <% @lost_pets.each_slice(4) do |four_lost_pets| %>
-                  <div class="item">
-                    <div class="row">
-                      <% four_lost_pets.each do |lost_pet| %>
-                      <% if lost_pet.images.first.online_url != "" %>
-                      <div class="col-md-3"><a href="/pets/<%= lost_pet.id %>" class="thumbnail"><img src="<%= lost_pet.images.first.src %>" alt="Image" class="img-fluid"></a>
-                      </div>
-                      <% else %>
-                      <div class="col-md-3"><a href="/pets/<%= lost_pet.id %>" class="thumbnail"><img src="https://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg" alt="Image" class="img-fluid"></a>
-                      </div>  
-                      <% end %>                      
-                  <% end %>
-                    </div>
-                  </div>  
-                  <% end %>
-
-                   
-                  </div><!--.carousel-inner-->
-
-                    <a data-slide="prev" href="#firstcarousel" class="left carousel-control">‹</a>
-                    <a data-slide="next" href="#firstcarousel" class="right carousel-control">›</a>
-                  </div><!--.Carousel-->
-                   
-      </div>
-  </div>
-</div>  
-<br>
-<br>
-
-
-
-<h2>Found Pets</h2>
-<div class="container">
-    <div class="row" id="secondcarousel" >
-      <div class="col-md-12">
-                <div class="carousel slide">               
-                <div class="carousel-inner">
-                <% @found_pets.each_slice(4) do |four_found_pets| %>
-                <div class="item">
-                  <div class="row">
-                    <% four_found_pets.each do |found_pet| %>
-                      <% if found_pet.images.first.online_url != "" %>
-                      <div class="col-md-3"><a href="/pets/<%= found_pet.id %>" class="thumbnail"><img src="<%= found_pet.images.first.src %>" alt="Image" class="img-fluid"></a>
-                      </div>
-                      <% else %>
-                      <div class="col-md-3"><a href="/pets/<%= found_pet.id %>" class="thumbnail"><img src="https://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg" alt="Image" class="img-fluid"></a>
-                      </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>  
-                <% end %>
-
-                <!-- style="max-width:100%;" -->
-
-                 
-                </div><!--.carousel-inner-->
-
-                  <a data-slide="prev" href="#secondcarousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#secondcarousel" class="right carousel-control">›</a>
-                </div><!--.Carousel-->
-                 
-      </div>
-    </div>
-
-</div><!--.container-->
-
-<% @found_pets.each do |found_pet| %>
-  <p><%= found_pet.id %></p>
-  <p><%= found_pet.images.first.url_file_name %></p>
-  <img src="<%= found_pet.images.first.src %>" alt="Image" style="max-width:100%;">
-<% end %>
-
-    <p><%= @pets %></p>
+<p><%= @pets %></p>
       <%= form_tag "/pets", method: "get" do %>
       Animal:
       <select name="form_animal">
-        <option value="dog">dog</option>
+        <option value="dog">Dog</option>
         <option value="cat">Cat</option>
       </select>
       Breed: <input type="text" name="form_breed">
@@ -109,6 +21,136 @@
       <input type="submit" value="Submit">
       <% end %>
 
- <br>
- <br>
+
+
+
+<h2>Lost pets (<%= @lost_pets.length %>)</h2>
+<div class="container">
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="carousel slide" id="firstcarousel" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @lost_pets.each_slice(4) do |four_lost_pets| %>
+            <div class="item">
+              <div class="row">
+                <% four_lost_pets.each do |lost_pet| %>
+                <div class="col-md-3">
+                  <a href="/pets/<%= lost_pet.id %>" class="thumbnail">
+                    <% if lost_pet.images.first && lost_pet.images.first.online_url != "" %>
+                      <img src="<%= lost_pet.images.first.src %>" id="lost-pet" alt="Image"  class="img-fluid">
+                    <% else %>
+                      <img src="https://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg" alt="Image" class="img-fluid">
+                    <% end %>                      
+                  </a>
+                </div>
+                <% end %>
+              </div>
+            </div>  
+          <% end %>
+        </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#firstcarousel" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#firstcarousel" class="right carousel-control">›</a>
+      </div><!--.Carousel-->
+    </div>
+  </div>
+</div> 
  
+<br>
+<br>
+
+
+
+<h2>Found Pets (<%= @found_pets.length %>)</h2>
+<div class="container">
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="carousel slide" id="secondcarousel" data-ride="carousel">               
+        <div class="carousel-inner">
+          <% @found_pets.each_slice(4) do |four_found_pets| %>
+            <div class="item">
+              <div class="row">
+                <% four_found_pets.each do |found_pet| %>
+                  <div class="col-md-3">
+                    <a href="/pets/<%= found_pet.id %>" class="thumbnail">
+                      <% if found_pet.images.first && found_pet.images.first.online_url != "" %>
+                        <img src="<%= found_pet.images.first.src %>" alt="Image" class="img-fluid">
+                      <% else %>
+                        <img src="https://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg" alt="Image" class="img-fluid">
+                      <% end %>
+                    </a>
+                  </div>
+                <% end %>
+              </div>
+            </div>  
+          <% end %>
+        </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#secondcarousel" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#secondcarousel" class="right carousel-control">›</a>
+      </div><!--.Carousel-->
+    </div>
+  </div>
+</div><!--.container-->
+
+
+
+    
+
+ <br>
+
+
+
+    <section class="xen-port xen-pad pad-top-40" id="portfolio">
+      <div class="container fluid nopadding">
+        <div class="row">
+          <!-- PORTFOLIO ITEMS START -->
+          <div class="col-md-10 col-md-offset-1">
+            <!-- START PORTFOLIO BUTTONS -->
+            <ul class="pf-filter">
+              <li class="btn-lines" data-filter="*">show all
+              </li>
+              <li class="btn-lines" data-filter=".lost">lost
+              </li>
+              <li class="btn-lines" data-filter=".found">found
+              </li>
+            </ul>
+            <!-- END PORTFOLIO BUTTONS -->
+            <!-- PORTFOLIO GRID ITEMS -->
+            <div id="masonry-grid-3" class="masonry-grid-4">
+              <div class="isotope">
+                <% @pets.each do |pet| %>
+                <div class="grids-item item nopadding <%= pet.lost_or_found %>" >
+
+                  <% if pet.images.first && pet.images.first.online_url != "" %>
+                    <img class="m-grid-item-2 masonry-pad" src="<%= pet.images.first.src %>" alt="portfolio">
+                  <% else %>
+                    <img class="m-grid-item-2 masonry-pad" src="https://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg" alt="portfolio">
+                  <% end %>
+
+                  <!-- Portfolio Hover -->
+                  <div class="portfolio-hover">
+                    <div class="action-btn">
+                      <div class="port-title"><%= pet.name ? pet.name : "Unknown" %></div>
+                      <a class="port-subt" href="/pets/<%= pet.id %>"><%= pet.neighborhood %></a>
+                    </div>
+                  </div>
+                  <!-- End Portfolio Hover -->
+                </div>
+                <% end %>
+              </div>
+              <!-- END PORTFOLIO GRID ITEMS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+
+ <script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel({
+        interval: false
+    });
+    console.log($('.carousel'));
+});
+</script>

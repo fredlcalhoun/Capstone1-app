@@ -1,16 +1,27 @@
 class PetsController < ApplicationController
   def index
+
     if params[:form_animal]
-      search_hash = {}
-      search_hash[:animal] = params[:form_animal] if params[:form_animal] != ""
-      search_hash[:breed] = params[:form_breed] if params[:form_breed] != ""
-      search_hash[:color] = params[:form_color] if params[:form_color] != ""
-      search_hash[:city] = params[:form_city] if params[:form_city] != ""
-      search_hash[:state] = params[:form_state] if params[:form_state] != ""
-      search_hash[:neighborhood] = params[:form_neighborhood] if params[:form_neighborhood] != ""
-      @lost_pets = Pet.where(search_hash).where(lost_or_found: "lost")
-      @found_pets = Pet.where(search_hash).where(lost_or_found: "found")
+      # search_hash = {}
+      # search_hash[:animal] = params[:form_animal] if params[:form_animal] != ""
+      # search_hash[:breed] = params[:form_breed] if params[:form_breed] != ""
+      # search_hash[:color] = params[:form_color] if params[:form_color] != ""
+      # search_hash[:city] = params[:form_city] if params[:form_city] != ""
+      # search_hash[:state] = params[:form_state] if params[:form_state] != ""
+      # search_hash[:neighborhood] = params[:form_neighborhood] if params[:form_neighborhood] != ""
+      search_strings = []
+      search_strings << "LOWER(animal) = '#{params[:form_animal].downcase}'" if params[:form_animal] != ""
+      search_strings << "LOWER(breed) = '#{params[:form_breed].downcase}'" if params[:form_breed] != ""
+      search_strings << "LOWER(color) = '#{params[:form_color].downcase}'" if params[:form_color] != ""
+      search_strings << "LOWER(city) = '#{params[:form_city].downcase}'" if params[:form_city] != ""
+      search_strings << "LOWER(state) = '#{params[:form_state].downcase}'" if params[:form_state] != ""
+      search_strings << "LOWER(neighborhood) = '#{params[:form_neighborhood].downcase}'" if params[:form_neighborhood] != ""
+      search_string = search_strings.join(' AND ')
+      @pets = Pet.where(search_string)
+      @lost_pets = Pet.where(search_string).where(lost_or_found: "lost")
+      @found_pets = Pet.where(search_string).where(lost_or_found: "found")
     else
+      @pets = Pet.all
       @lost_pets = Pet.where(lost_or_found: "lost")
       @found_pets = Pet.where(lost_or_found: "found")
     end
