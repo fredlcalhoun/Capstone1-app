@@ -4,7 +4,11 @@
           <div class="col-md-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
             <div class="portfolio-project-media">
               <% if @pet.images.first %>
-              <img src="<%= @pet.images.first.online_url %>" class="img-fluid" alt="portfolio">
+                <% if @pet.images.first.online_url != "" &&  @pet.images.first.online_url != nil %>
+                  <img src="<%= @pet.images.first.online_url %>" class="img-fluid" alt="Image">
+                <% else %>
+                  <img src="<%= @pet.images.first.url %>" class="img-fluid" alt="Image">
+                <% end %>
               <% end %> 
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
