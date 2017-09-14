@@ -100,14 +100,22 @@
             <ul class="nav navbar-nav navbar-right main-navigation">
               <li><a href="/pets">home</a></li>
               <li><a href="/pets/new">upload lost or found pets</a></li>
+              <% unless current_user %>
               <li><a href="/signup">sign up</a></li>
+              <% end %>
               <li class="dropdown">
-                <a href="/login">Login</a>
+              <% unless current_user %>
+              <li> <a href="/login">Login</a> </li>
+                
                <!--  <ul class="dropdown-menu">
                   <li><a href="/portfolio-3-col-masonry.html">Masonry 3 col</a></li>
                   <li><a href="/portfolio-3-col-grid.html">Grid 3 col</a></li>
                   <li><a href="/portfolio-4-col-grid.html">Grid 4 col</a></li>
                 </ul> -->
+              <% end %>  
+              <% if current_user %>
+              <li><a href="/logout">Log out</a></li>
+              <% end %>
               </li>
               <li><a href="/blog-list.html">blog</a></li>
               <li><a href="/contact.html">contact</a></li>
