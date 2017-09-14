@@ -6,7 +6,7 @@
   }
 </style>
 
-<p><%= @pets %></p>
+<p><% @pets %></p>
       <%= form_tag "/pets", method: "get" do %>
       Animal:
       <select name="form_animal">
@@ -27,8 +27,8 @@
 <h2>Lost pets (<%= @lost_pets.length %>)</h2>
 <div class="container">
   <div class="row" >
-    <div class="col-md-12">
-      <div class="carousel slide" id="firstcarousel" data-ride="carousel">
+    <div class="col-md-12" id="firstcarousel">
+      <div class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <% @lost_pets.each_slice(4) do |four_lost_pets| %>
             <div class="item">
@@ -63,8 +63,8 @@
 <h2>Found Pets (<%= @found_pets.length %>)</h2>
 <div class="container">
   <div class="row" >
-    <div class="col-md-12">
-      <div class="carousel slide" id="secondcarousel" data-ride="carousel">               
+    <div class="col-md-12" id="secondcarousel" >
+      <div class="carousel slide" data-ride="carousel">               
         <div class="carousel-inner">
           <% @found_pets.each_slice(4) do |four_found_pets| %>
             <div class="item">
