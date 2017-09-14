@@ -9,31 +9,31 @@
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
               <ul class="portfolio-project-info">
-                <li>Pet Name:<span> <%= @pet.name ? @pet.name : "Unknown" %></span>
+                <li>Pet Name: <span> <%= @pet.name ? @pet.name : "Unknown" %></span>
                 </li>
-                <li>created by:<span> <%= @pet.user.name %></span>
+                <li>created by: <span> <%= @pet.user.name %></span>
                 </li>
-                <li>another thing:<span> hello</span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4 col-sm-12 col-xs-12">
-              <ul class="portfolio-project-info">
-                <li>created at :<span>  <%= @pet.created_at %></span>
-                </li>
-                <li>skills used: <span>  HTML5/PHP/CSS3</span>
-                </li>
-                <li>another thing :<span> hello</span>
+                <li>breed: <span> <%= @pet.breed %></span>
                 </li>
               </ul>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
               <ul class="portfolio-project-info">
-                <li>category : <span> web application</span>
+                <li>created at: <span>  <%= @pet.created_at %></span>
                 </li>
-                <li>share: <a href="#"><i class="icon-facebook"></i></a> <a href="#"><i class=" icon-dribbble "></i></a> <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-googleplus"></i></a> <a href="#"><i class="icon-linkedin"></i></a>
+                <li>color: <span>  <%= @pet.color %></span>
                 </li>
-                <li>another thing :<span> hello</span>
+                <li>city: <span> <%= @pet.city %></span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <ul class="portfolio-project-info">
+                <li>state: <span><%= @pet.state %></span>
+                </li>
+                <li>neighborhood: <span><%= @pet.neighborhood %> </span><!-- <a href="#"><i class="icon-facebook"></i></a> <a href="#"><i class=" icon-dribbble "></i></a> <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-googleplus"></i></a> <a href="#"><i class="icon-linkedin"></i></a> -->
+                </li>
+                <li>user e-mail: <span><%= @pet.user.email %></span>
                 </li>
               </ul>
             </div>
@@ -44,14 +44,13 @@
             <!-- Project body text -->
             <div class="portfolio-project-details">
               <p>
-                Some people believe that the good life is attainable through education, while others believe that following a rule of conduct would leave you leading the <q>Still others say that being truly happy will allow you to live a good life. There are many questions that arise when trying to answer the question of "What is the good life and how can it be attained.</q>
+                 <span><%= @pet.description %></span>
+                
               </p>
-              <p>
-                Some people believe that the good life is attainable through education, while others believe that following a rule of conduct would leave you leading the <q>Still others say that being truly happy will allow you to live a good life. There are many questions that arise when trying to answer the question of "What is the good life and how can it be attained.</q>
-              </p>
+             
             </div>
             <!--/ End Portfolio details text -->
-            <nav class="article-nav row">
+            <!-- <nav class="article-nav row">
               <a href="#ignore-click" class="article-nav-link col-sm-6">
                 <i class="arrow_carrot-2left"></i>
                 <p>previous
@@ -64,7 +63,7 @@
                 </p>
                 <i class=" arrow_carrot-2right"></i>
               </a>
-            </nav>
+            </nav> -->
             <!-- End Comments -->
             <!-- Add Comment -->
             <div id="end-content"></div>
@@ -77,23 +76,8 @@
       <!--/ End container -->
     </section>
 
-<% if @pet.images.first %>
-<img src="<%= @pet.images.first.online_url %>" style="max-width: 75%">
-<% end %> 
-<h2>Lost or found: <%= @pet.lost_or_found %></h2>
-<p>Name: <%= @pet.name %></p>
-<p>Animal: <%= @pet.animal %></p>
-<p>Breed: <%= @pet.breed %></p>
-<p>Color: <%= @pet.color %></p>
-<p>City: <%= @pet.city %></p>
-<p>State: <%= @pet.state %></p>
-<p>Neighborhood: <%= @pet.neighborhood %></p>
-<p>Description: <%= @pet.description %></p>
-<p>Time: <%= @pet.time %></p>
-<h4>Email <%= @pet.user.email %> if you have any information!</h4>
-
 <div>
-  <a href="/pets">Return to all pets</a>
+  <a href="/pets"><b>Return to all pets<b></a>
 </div>
 <!-- <div>
   <a href="/pets/<%= @pet.id %>/edit">Edit this pet</a>
